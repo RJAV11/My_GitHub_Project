@@ -543,6 +543,7 @@
       <button class="filter-btn" data-filter="archived">Archived</button>
     </div>
     <button id="login-btn">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
   Login with Google
 </button>
     <button id="add-btn">
@@ -817,17 +818,29 @@ import {
       p.status = document.getElementById('f-status').value;
       p.emoji = document.getElementById('f-emoji').value.trim() || '📁';
     } else {
-      projects.push({
-        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
-        name, url,
-        desc: document.getElementById('f-desc').value.trim(),
-        lang: document.getElementById('f-lang').value.trim(),
-        cat: document.getElementById('f-cat').value.trim(),
-        status: document.getElementById('f-status').value,
-        emoji: document.getElementById('f-emoji').value.trim() || '📁',
-        colorIdx: projects.length
-      });
-    }
+     const newProject = {
+
+name,
+url,
+
+desc: document.getElementById('f-desc').value.trim(),
+
+lang: document.getElementById('f-lang').value.trim(),
+
+cat: document.getElementById('f-cat').value.trim(),
+
+status: document.getElementById('f-status').value,
+
+emoji: document.getElementById('f-emoji').value.trim() || '📁',
+
+colorIdx: projects.length
+
+};
+
+
+projects.push(newProject);
+
+await saveProject(newProject);
 
     save();
     closeModal();
