@@ -613,7 +613,21 @@
 <script type="module" src="firebase.js"></script>
 <script type="module">
   // ── Data ──────────────────────────────────────────────────────────────────
-  import { loginWithGoogle, auth } from "./firebase.js";
+  import { 
+  loginWithGoogle, 
+  auth,
+  db
+} from "./firebase.js";
+
+
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
   let projects = [];
   document.getElementById("login-btn")
 .addEventListener("click", async ()=>{
@@ -623,6 +637,35 @@
     alert(
       "Welcome " + user.email
     );
+  loadProjects();
+  async function loadProjects(){
+
+ const user = auth.currentUser;
+
+ if(!user) return;
+
+
+ const snapshot = await getDocs(
+   collection(db,"users",user.uid,"projects")
+ );
+
+
+ projects=[];
+
+
+ snapshot.forEach((doc)=>{
+
+   projects.push({
+     id:doc.id,
+     ...doc.data()
+   });
+
+ });
+
+
+ render();
+
+}
 
 });
   let editingId = null;
@@ -632,9 +675,22 @@
     '#7fffb2', '#5b8dff', '#ff6b9d', '#ffd166', '#a78bfa', '#34d399', '#f97316'
   ];
 
-  function save() {
-    localStorage.setItem('gh_projects', JSON.stringify(projects));
-  }
+  async function saveProject(project){
+
+ const user = auth.currentUser;
+
+ if(!user){
+   alert("Please login first");
+   return;
+ }
+
+
+ await addDoc(
+   collection(db,"users",user.uid,"projects"),
+   project
+ );
+
+}
 
   // ── Render ────────────────────────────────────────────────────────────────
   function render(filter = activeFilter) {
