@@ -607,7 +607,8 @@
   </div>
 </div>
 
-<script>
+<script type="module" src="firebase.js"></script>
+<script type="module">
   // ── Data ──────────────────────────────────────────────────────────────────
   let projects = JSON.parse(localStorage.getItem('gh_projects') || '[]');
   let editingId = null;
