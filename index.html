@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* Grid background */
     body::before {
       content: '';
       position: fixed;
@@ -50,11 +49,7 @@
       z-index: 1;
     }
 
-    /* Header */
-    header {
-      margin-bottom: 64px;
-      animation: fadeUp 0.7s ease both;
-    }
+    header { margin-bottom: 64px; animation: fadeUp 0.7s ease both; }
 
     .header-tag {
       font-family: 'Space Mono', monospace;
@@ -68,12 +63,7 @@
       gap: 8px;
     }
 
-    .header-tag::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--accent);
-    }
+    .header-tag::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
 
     h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -83,9 +73,7 @@
       margin-bottom: 16px;
     }
 
-    h1 span {
-      color: var(--accent);
-    }
+    h1 span { color: var(--accent); }
 
     .subtitle {
       color: var(--muted);
@@ -95,7 +83,26 @@
       line-height: 1.7;
     }
 
-    /* Controls bar */
+    .status-banner {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-banner .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--muted);
+    }
+
+    .status-banner.online .dot {
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+    }
+
     .controls {
       display: flex;
       gap: 12px;
@@ -105,18 +112,11 @@
       animation: fadeUp 0.7s 0.1s ease both;
     }
 
-    .search-wrap {
-      flex: 1;
-      min-width: 200px;
-      position: relative;
-    }
+    .search-wrap { flex: 1; min-width: 200px; position: relative; }
 
     .search-wrap svg {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%); color: var(--muted);
     }
 
     #search {
@@ -135,11 +135,7 @@
     #search:focus { border-color: var(--accent); }
     #search::placeholder { color: var(--muted); }
 
-    .filter-btns {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .filter-btn {
       font-family: 'Space Mono', monospace;
@@ -160,7 +156,6 @@
       background: rgba(127,255,178,0.06);
     }
 
-    /* Stats bar */
     .stats {
       display: flex;
       gap: 24px;
@@ -179,10 +174,7 @@
       font-weight: 700;
     }
 
-    /* Add button */
-    #add-btn {
-      background: var(--accent);
-      color: #0a0a0f;
+    #add-btn, #login-btn {
       border: none;
       padding: 12px 22px;
       font-family: 'Syne', sans-serif;
@@ -197,12 +189,44 @@
       white-space: nowrap;
     }
 
+    #add-btn {
+      background: var(--accent);
+      color: #0a0a0f;
+    }
+
     #add-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 8px 24px rgba(127,255,178,0.25);
     }
 
-    /* Grid */
+    #add-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #login-btn {
+      background: transparent;
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+    }
+
+    #login-btn:hover {
+      background: rgba(91,141,255,0.08);
+      transform: translateY(-1px);
+    }
+
+    #login-btn.logged-in {
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    #login-btn.logged-in:hover {
+      border-color: var(--accent3);
+      color: var(--accent3);
+    }
+
     #grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -210,7 +234,6 @@
       animation: fadeUp 0.7s 0.2s ease both;
     }
 
-    /* Card */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -249,37 +272,25 @@
     }
 
     .card-icon {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 10px;
       background: rgba(127,255,178,0.08);
       border: 1px solid rgba(127,255,178,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       font-size: 18px;
     }
 
-    .card-actions {
-      display: flex;
-      gap: 6px;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
+    .card-actions { display: flex; gap: 6px; opacity: 0; transition: opacity 0.2s; }
     .card:hover .card-actions { opacity: 1; }
 
     .card-action-btn {
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border-radius: 7px;
       border: 1px solid var(--border);
       background: var(--surface);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       color: var(--muted);
       transition: all 0.15s;
     }
@@ -304,9 +315,7 @@
     }
 
     .card-link {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+      display: flex; align-items: center; gap: 7px;
       font-family: 'Space Mono', monospace;
       font-size: 11px;
       color: var(--accent2);
@@ -318,12 +327,7 @@
 
     .card-link:hover { color: var(--accent); }
 
-    .card-footer {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .card-footer { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 
     .tag {
       font-family: 'Space Mono', monospace;
@@ -343,51 +347,40 @@
     }
 
     .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
+      width: 7px; height: 7px; border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 6px var(--accent);
       margin-left: auto;
     }
 
-    .status-dot.archived {
-      background: var(--muted);
-      box-shadow: none;
-    }
+    .status-dot.archived { background: var(--muted); box-shadow: none; }
 
-    /* Empty state */
-    #empty {
+    #empty, #logged-out, #no-results {
       grid-column: 1/-1;
       text-align: center;
       padding: 80px 24px;
       color: var(--muted);
       font-family: 'Space Mono', monospace;
       font-size: 13px;
+      display: none;
     }
 
-    #empty .big { font-size: 48px; margin-bottom: 16px; }
+    #empty .big, #logged-out .big { font-size: 48px; margin-bottom: 16px; }
 
-    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.75);
       backdrop-filter: blur(6px);
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 24px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s;
     }
 
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
 
     .modal {
       background: var(--card);
@@ -402,11 +395,7 @@
 
     .modal-overlay.open .modal { transform: translateY(0); }
 
-    .modal h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
+    .modal h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
 
     .modal-sub {
       font-family: 'Space Mono', monospace;
@@ -415,9 +404,7 @@
       margin-bottom: 28px;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
+    .form-group { margin-bottom: 18px; }
 
     label {
       display: block;
@@ -444,18 +431,13 @@
 
     input:focus, textarea:focus, select:focus { border-color: var(--accent); }
     input::placeholder, textarea::placeholder { color: var(--muted); }
-
     textarea { resize: vertical; min-height: 90px; }
-
     select option { background: var(--card); }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     .modal-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-      margin-top: 24px;
+      display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px;
     }
 
     .btn-cancel {
@@ -486,29 +468,15 @@
       transition: all 0.2s;
     }
 
-    .btn-save:hover {
-      box-shadow: 0 6px 20px rgba(127,255,178,0.3);
-      transform: translateY(-1px);
-    }
+    .btn-save:hover { box-shadow: 0 6px 20px rgba(127,255,178,0.3); transform: translateY(-1px); }
+    .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .card { animation: fadeUp 0.4s ease both; }
-
-    /* No results */
-    #no-results {
-      display: none;
-      grid-column: 1/-1;
-      text-align: center;
-      padding: 60px 24px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-    }
 
     @media (max-width: 600px) {
       .form-row { grid-template-columns: 1fr; }
@@ -523,7 +491,11 @@
   <header>
     <div class="header-tag">Portfolio Index</div>
     <h1>My <span>GitHub</span><br/>Projects</h1>
-    <p class="subtitle">// A curated index of repositories, experiments & builds.</p>
+    <p class="subtitle">// A curated index of repositories, experiments &amp; builds.</p>
+    <div class="status-banner" id="status-banner">
+      <div class="dot"></div>
+      <span id="status-text">Not signed in — sign in to load your projects</span>
+    </div>
   </header>
 
   <div class="stats">
@@ -543,16 +515,21 @@
       <button class="filter-btn" data-filter="archived">Archived</button>
     </div>
     <button id="login-btn">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-  Login with Google
-</button>
-    <button id="add-btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      Login with Google
+    </button>
+    <button id="add-btn" disabled title="Sign in first">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       Add Project
     </button>
   </div>
 
   <div id="grid">
+    <div id="logged-out">
+      <div class="big">🔒</div>
+      <div>Sign in to see and manage your projects.</div>
+      <div style="margin-top:8px; opacity:0.6">Your data is tied to your Google account, not this device.</div>
+    </div>
     <div id="empty">
       <div class="big">⌀</div>
       <div>No projects yet.</div>
@@ -611,111 +588,133 @@
   </div>
 </div>
 
-<script type="module" src="firebase.js"></script>
 <script type="module">
-  // ── Data ──────────────────────────────────────────────────────────────────
-  import { 
-  loginWithGoogle, 
-  auth,
-  db
-} from "./firebase.js";
+  import {
+    loginWithGoogle,
+    logout,
+    auth,
+    db,
+    onAuthStateChanged
+  } from "./firebase.js";
 
+  import {
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc,
+    updateDoc
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-import {
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-  updateDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  // ── State ─────────────────────────────────────────────────────────────
   let projects = [];
-  document.getElementById("login-btn")
-.addEventListener("click", async ()=>{
-
-    const user = await loginWithGoogle();
-
-    alert(
-      "Welcome " + user.email
-    );
-  loadProjects();
-  async function loadProjects(){
-
- const user = auth.currentUser;
-
- if(!user) return;
-
-
- const snapshot = await getDocs(
-   collection(db,"users",user.uid,"projects")
- );
-
-
- projects=[];
-
-
- snapshot.forEach((doc)=>{
-
-   projects.push({
-     id:doc.id,
-     ...doc.data()
-   });
-
- });
-
-
- render();
-
-}
-
-});
   let editingId = null;
   let activeFilter = 'all';
+  let currentUser = null;
 
-  const accentColors = [
-    '#7fffb2', '#5b8dff', '#ff6b9d', '#ffd166', '#a78bfa', '#34d399', '#f97316'
-  ];
+  const accentColors = ['#7fffb2', '#5b8dff', '#ff6b9d', '#ffd166', '#a78bfa', '#34d399', '#f97316'];
 
-  async function saveProject(project){
+  const grid = document.getElementById('grid');
+  const loginBtn = document.getElementById('login-btn');
+  const addBtn = document.getElementById('add-btn');
+  const statusBanner = document.getElementById('status-banner');
+  const statusText = document.getElementById('status-text');
+  const modalSaveBtn = document.getElementById('modal-save');
 
- const user = auth.currentUser;
+  // ── Auth ──────────────────────────────────────────────────────────────
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
 
- if(!user){
-   alert("Please login first");
-   return;
- }
+    if (user) {
+      loginBtn.classList.add('logged-in');
+      loginBtn.innerHTML = `Sign out (${escHtml(user.email)})`;
+      addBtn.disabled = false;
+      addBtn.title = '';
+      statusBanner.classList.add('online');
+      statusText.textContent = `Synced as ${user.email}`;
+      await loadProjects();
+    } else {
+      loginBtn.classList.remove('logged-in');
+      loginBtn.innerHTML = `
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        Login with Google`;
+      addBtn.disabled = true;
+      addBtn.title = 'Sign in first';
+      statusBanner.classList.remove('online');
+      statusText.textContent = 'Not signed in — sign in to load your projects';
+      projects = [];
+      render();
+    }
+  });
 
+  loginBtn.addEventListener('click', async () => {
+    try {
+      if (currentUser) {
+        await logout();
+      } else {
+        await loginWithGoogle();
+      }
+    } catch (err) {
+      alert('Sign-in failed: ' + err.message);
+    }
+  });
 
- await addDoc(
-   collection(db,"users",user.uid,"projects"),
-   project
- );
+  // ── Firestore I/O ─────────────────────────────────────────────────────
+  function projectsCollection() {
+    return collection(db, "users", currentUser.uid, "projects");
+  }
 
-}
+  async function loadProjects() {
+    const snapshot = await getDocs(projectsCollection());
+    projects = [];
+    snapshot.forEach((d) => projects.push({ id: d.id, ...d.data() }));
+    render();
+  }
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  async function addProjectRemote(project) {
+    const ref = await addDoc(projectsCollection(), project);
+    return ref.id;
+  }
+
+  async function updateProjectRemote(id, project) {
+    await updateDoc(doc(db, "users", currentUser.uid, "projects", id), project);
+  }
+
+  async function deleteProjectRemote(id) {
+    await deleteDoc(doc(db, "users", currentUser.uid, "projects", id));
+  }
+
+  // ── Render ────────────────────────────────────────────────────────────
   function render(filter = activeFilter) {
     const query = document.getElementById('search').value.toLowerCase();
-    const grid = document.getElementById('grid');
 
-    let visible = projects.filter(p => {
+    grid.querySelectorAll('.card').forEach((c) => c.remove());
+
+    document.getElementById('logged-out').style.display = !currentUser ? 'block' : 'none';
+    document.getElementById('empty').style.display =
+      (currentUser && projects.length === 0) ? 'block' : 'none';
+
+    if (!currentUser) {
+      document.getElementById('no-results').style.display = 'none';
+      updateStats();
+      return;
+    }
+
+    let visible = projects.filter((p) => {
       const matchFilter = filter === 'all' || p.status === filter;
       const matchSearch = !query ||
         p.name.toLowerCase().includes(query) ||
-        p.desc.toLowerCase().includes(query) ||
+        (p.desc || '').toLowerCase().includes(query) ||
         (p.lang || '').toLowerCase().includes(query) ||
         (p.cat || '').toLowerCase().includes(query);
       return matchFilter && matchSearch;
     });
 
-    // Remove existing cards
-    grid.querySelectorAll('.card').forEach(c => c.remove());
-    document.getElementById('empty').style.display = projects.length === 0 ? 'block' : 'none';
     document.getElementById('no-results').style.display =
       (projects.length > 0 && visible.length === 0) ? 'block' : 'none';
 
     visible.forEach((p, i) => {
-      const color = accentColors[p.colorIdx % accentColors.length];
+      const color = accentColors[(p.colorIdx ?? i) % accentColors.length];
       const card = document.createElement('div');
       card.className = 'card';
       card.style.setProperty('--card-accent', color);
@@ -724,10 +723,10 @@ import {
         <div class="card-top">
           <div class="card-icon">${p.emoji || '📁'}</div>
           <div class="card-actions">
-            <button class="card-action-btn edit" title="Edit" onclick="openEdit('${p.id}')">
+            <button class="card-action-btn edit" data-action="edit" data-id="${p.id}" title="Edit">
               <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
-            <button class="card-action-btn delete" title="Delete" onclick="deleteProject('${p.id}')">
+            <button class="card-action-btn delete" data-action="delete" data-id="${p.id}" title="Delete">
               <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
             </button>
           </div>
@@ -747,34 +746,58 @@ import {
       grid.appendChild(card);
     });
 
-    // Stats
-    const langs = [...new Set(projects.map(p => p.lang).filter(Boolean))];
+    updateStats();
+  }
+
+  function updateStats() {
+    const langs = [...new Set(projects.map((p) => p.lang).filter(Boolean))];
     document.getElementById('count-total').textContent = projects.length;
-    document.getElementById('count-active').textContent = projects.filter(p => p.status === 'active').length;
+    document.getElementById('count-active').textContent = projects.filter((p) => p.status === 'active').length;
     document.getElementById('count-langs').textContent = langs.length;
   }
 
   function escHtml(str) {
-    return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return (str || '').toString()
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  // ── Modal ─────────────────────────────────────────────────────────────────
+  // ── Card action delegation (edit / delete) ───────────────────────────
+  grid.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    if (btn.dataset.action === 'edit') {
+      openModal(id);
+    } else if (btn.dataset.action === 'delete') {
+      if (!confirm('Remove this project?')) return;
+      try {
+        await deleteProjectRemote(id);
+        projects = projects.filter((p) => p.id !== id);
+        render();
+      } catch (err) {
+        alert('Delete failed: ' + err.message);
+      }
+    }
+  });
+
+  // ── Modal ─────────────────────────────────────────────────────────────
   function openModal(id = null) {
     editingId = id;
     const modal = document.getElementById('modal');
     document.getElementById('modal-title').textContent = id ? 'Edit Project' : 'Add Project';
 
     if (id) {
-      const p = projects.find(x => x.id === id);
+      const p = projects.find((x) => x.id === id);
       document.getElementById('f-name').value = p.name;
       document.getElementById('f-url').value = p.url;
-      document.getElementById('f-desc').value = p.desc;
+      document.getElementById('f-desc').value = p.desc || '';
       document.getElementById('f-lang').value = p.lang || '';
       document.getElementById('f-cat').value = p.cat || '';
       document.getElementById('f-status').value = p.status;
       document.getElementById('f-emoji').value = p.emoji || '';
     } else {
-      ['f-name','f-url','f-desc','f-lang','f-cat','f-emoji'].forEach(id => document.getElementById(id).value = '');
+      ['f-name', 'f-url', 'f-desc', 'f-lang', 'f-cat', 'f-emoji'].forEach((fid) => document.getElementById(fid).value = '');
       document.getElementById('f-status').value = 'active';
     }
 
@@ -787,79 +810,62 @@ import {
     editingId = null;
   }
 
-  function openEdit(id) {
-    openModal(id);
-  }
-
-  function deleteProject(id) {
-    if (!confirm('Remove this project?')) return;
-    projects = projects.filter(p => p.id !== id);
-    save();
-    render();
-  }
-
-  document.getElementById('add-btn').addEventListener('click', () => openModal());
+  addBtn.addEventListener('click', () => openModal());
   document.getElementById('modal-cancel').addEventListener('click', closeModal);
-  document.getElementById('modal').addEventListener('click', e => {
+  document.getElementById('modal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('modal')) closeModal();
   });
 
-  document.getElementById('modal-save').addEventListener('click', () => {
+  modalSaveBtn.addEventListener('click', async () => {
+    if (!currentUser) { alert('Please sign in first.'); return; }
+
     const name = document.getElementById('f-name').value.trim();
     const url = document.getElementById('f-url').value.trim();
     if (!name || !url) { alert('Name and GitHub URL are required.'); return; }
 
-    if (editingId) {
-      const p = projects.find(x => x.id === editingId);
-      p.name = name; p.url = url;
-      p.desc = document.getElementById('f-desc').value.trim();
-      p.lang = document.getElementById('f-lang').value.trim();
-      p.cat = document.getElementById('f-cat').value.trim();
-      p.status = document.getElementById('f-status').value;
-      p.emoji = document.getElementById('f-emoji').value.trim() || '📁';
-    } else {
-     const newProject = {
+    const data = {
+      name,
+      url,
+      desc: document.getElementById('f-desc').value.trim(),
+      lang: document.getElementById('f-lang').value.trim(),
+      cat: document.getElementById('f-cat').value.trim(),
+      status: document.getElementById('f-status').value,
+      emoji: document.getElementById('f-emoji').value.trim() || '📁'
+    };
 
-name,
-url,
-
-desc: document.getElementById('f-desc').value.trim(),
-
-lang: document.getElementById('f-lang').value.trim(),
-
-cat: document.getElementById('f-cat').value.trim(),
-
-status: document.getElementById('f-status').value,
-
-emoji: document.getElementById('f-emoji').value.trim() || '📁',
-
-colorIdx: projects.length
-
-};
-
-
-projects.push(newProject);
-
-await saveProject(newProject);
-
-    save();
-    closeModal();
-    render();
+    modalSaveBtn.disabled = true;
+    try {
+      if (editingId) {
+        await updateProjectRemote(editingId, data);
+        const p = projects.find((x) => x.id === editingId);
+        Object.assign(p, data);
+      } else {
+        data.colorIdx = projects.length;
+        const newId = await addProjectRemote(data);
+        projects.push({ id: newId, ...data });
+      }
+      closeModal();
+      render();
+    } catch (err) {
+      alert('Save failed: ' + err.message);
+    } finally {
+      modalSaveBtn.disabled = false;
+    }
   });
 
-  // ── Search & Filter ───────────────────────────────────────────────────────
+  // ── Search & Filter ───────────────────────────────────────────────────
   document.getElementById('search').addEventListener('input', () => render());
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelectorAll('.filter-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
       activeFilter = btn.dataset.filter;
       render();
     });
   });
 
-  // ── Init ──────────────────────────────────────────────────────────────────
+  // ── Init ──────────────────────────────────────────────────────────────
   render();
 </script>
 </body>
